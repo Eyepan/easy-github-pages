@@ -7,7 +7,7 @@ if not os.path.exists(".git"):
     os.system("git add .")
 
 # Prompt user to attach to remote repository if not already attached
-status = os.system("git remote")
+status = os.system("git remote -v")
 if status != 0:
     repo_name = input("Enter the URL of the remote repository: ")
     os.system(f"git remote add origin {repo_name}")
