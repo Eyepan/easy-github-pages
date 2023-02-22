@@ -19,9 +19,11 @@ commit_message = input("Enter a commit message: ")
 push_type = input(
     "Enter 'master' to push to master branch or 'gh-pages' to push to gh-pages branch: ")
 
-# Build with npm
-print("Running npm build to build to ./dist")
-os.system("npm run build")
+# Check for presence of package.json file
+if os.path.exists("package.json"):
+    # Build with npm
+    print("Running npm build to build to ./dist")
+    os.system("npm run build")
 
 # Commit and push
 print("github actions")
