@@ -17,13 +17,14 @@ commit_message = input("Enter a commit message: ")
 
 # Prompt user for push type
 push_type = input(
-    "Enter 'master' to push to master branch or 'gh-pages' to push to gh-pages branch: ")
+    "Enter 'master' to push to master branch or 'gh-pages' to push to both master and gh-pages branch: ")
 
 # Check for presence of package.json file
 if os.path.exists("package.json"):
     # Build with npm
     print("Running npm build to build to ./dist")
     os.system("npm run build")
+
 
 # Commit and push
 print("github actions")
@@ -33,3 +34,4 @@ if push_type == "master":
     os.system("git push origin master")
 else:
     os.system("git subtree push --prefix dist origin gh-pages")
+    os.system("git push origin master")
