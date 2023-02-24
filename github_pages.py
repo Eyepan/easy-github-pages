@@ -25,6 +25,14 @@ if os.path.exists("package.json"):
     print("Running npm build to build to ./dist")
     os.system("npm run build")
 
+print("Making sure that .gitignore won't get in the middle of deploying ./dist")
+with open('.gitignore', 'r') as gitignorefile:
+    lines = gitignorefile.readlines()
+    with open('.gitignore', 'w') as gitignorefile:
+        for line in lines:
+            if "dist" not in line and "dist-ssr" not in line:
+                gitignorefile.write(line)
+
 
 # Commit and push
 print("github actions")
